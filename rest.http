@@ -1,5 +1,48 @@
+@baseUrl = http://localhost:8000
+@apiUrl = {{baseUrl}}/api/v1/auth
+
 //For API-testing
 
 ###
 
 GET http://localhost:8000/
+
+
+
+# ###
+
+# POST http://localhost:8000
+# Content-type: application/json
+
+# {
+#   "to": "receiver@email.com",
+#   "subject":"test subject",
+#   "message": "test body message, let's check it out"
+# }
+
+###
+
+POST {{apiUrl}}/login
+Content-type: application/json
+
+{
+  "email" : "test@gmail.com",
+  "password" : "1234"
+}
+
+
+###
+
+POST {{apiUrl}}/register
+Content-type: application/json
+
+{
+  "fname": "prasika",
+  "lname": "adhikari",
+  "phone": "1234",
+  "email" : "test@gmail.com",
+  "password" : "1234"
+}
+
+
+

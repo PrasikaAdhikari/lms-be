@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
-import mongoConnection from "./src/config/mongoConfig.js";
+import { mongoConnection } from "./src/config/mongoConfig.js";
+import { config } from "./src/config/config.js";
+import authRouter from "./src/routes/authRouter.js";
 
 const app = express();
 // Look for a variable named PORT which is set in the encvironment.
-const PORT = process.env.PORT || 8000;
+const PORT = config.port;
 // cors
 app.use(cors());
 
@@ -17,6 +19,9 @@ app.get("/", (req, res) => {
     message: "I AM ALIVE",
   });
 });
+
+//api/v1/auth
+app.use("/api/v1/auth", authRouter);
 
 // mongo connection
 mongoConnection()
@@ -33,9 +38,3 @@ mongoConnection()
     console.log(err.message);
     console.log("MONGO DB CONNECTION ERROR");
   });
-
-app.listen(PORT, (error) => {
-  error
-    ? console.log(error)
-    : console.log(`Server running at http://localhost:${PORT}`);
-});
