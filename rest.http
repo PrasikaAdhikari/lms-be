@@ -26,7 +26,7 @@ POST {{apiUrl}}/login
 Content-type: application/json
 
 {
-  "email" : "test@gmail.com",
+  "email" : "p@gmail.com",
   "password" : "1234"
 }
 
@@ -40,7 +40,7 @@ Content-type: application/json
   "fname": "prasika",
   "lname": "adhikari",
   "phone": "1234",
-  "email" : "test@gmail.com",
+  "email" : "p@gmail.com",
   "password" : "1234"
 }
 

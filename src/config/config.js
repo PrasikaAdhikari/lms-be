@@ -6,6 +6,6 @@ export const config = {
   jwt: {
     secret: process.env.JWT_SECRET || "secret",
 
-    expiresin: process.encvironment || "7d",
+    expiresIn: process.environment || "7d",
   },
 };

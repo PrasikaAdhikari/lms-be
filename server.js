@@ -3,6 +3,8 @@ import cors from "cors";
 import { mongoConnection } from "./src/config/mongoConfig.js";
 import { config } from "./src/config/config.js";
 import authRouter from "./src/routes/authRouter.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 // Look for a variable named PORT which is set in the encvironment.
