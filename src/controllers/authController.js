@@ -7,6 +7,43 @@ export const registerUser = async (req, res) => {
     // register user logic
     // {username,email,password}
     let userObject = req.body;
+    console.log(req.body);
+
+    // encrypt the password
+    let salt = bcrypt.genSaltSync(parseInt(process.env.SALT) || 10);
+    userObject.password = bcrypt.hashSync(userObject.password, salt);
+
+    let newUser = await createUser(userObject);
+
+    //If user is created, create a unique token to form a unique URL to send user email.
+  //Email verification
+  
+
+    return res.status(201).json({
+      status: true,
+      message: "User successfully created!",
+    });
+  } catch (err) {
+    console.log(err);
+
+    if (err.message.includes("E11000")) {
+      return res.status(400).json({
+        status: false,
+        message: "Email already used!",
+      });
+    } else {
+      return res.status(500).json({
+        status: false,
+        message: "SERVER ERROR",
+      });
+    }
+  }
+};
+export const postUser = async (req, res) => {
+  try {
+    // register user logic
+    // {username,email,password}
+    let userObject = req.body;
 
     // encrypt the password
     let salt = bcrypt.genSaltSync(parseInt(process.env.SALT) || 10);
@@ -34,7 +71,6 @@ export const registerUser = async (req, res) => {
     }
   }
 };
-
 export const loginUser = async (req, res) => {
   try {
     // login user
