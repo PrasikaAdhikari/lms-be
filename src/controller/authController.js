@@ -2,7 +2,7 @@ import {
   createUser,
   getUserByEmail,
   updateUser,
-} from "../models/users/UserModel.js";
+} from "../models/users/userModel.js";
 import { decodeFunction, encodeFunction } from "../utils/encodehelper.js";
 import { createAccessToken, createRefreshToken } from "../utils/jwt.js";
 
